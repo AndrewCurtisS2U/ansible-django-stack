@@ -1,12 +1,13 @@
 ---
 
-git_repo: https://github.com/jcalazan/youtube-audio-dl.git
+git_repo: git@github.com:AndrewCurtisS2U/S2U-stage-1.git
 
-project_name: youtube-audio-dl
-application_name: youtubeadl
+project_name: special2us
+application_name: special2us
 
 ssl_dest_dir: /etc/ssl
 
+# FIXME use our own certificates, not these ones
 ssl_crt: |
   -----BEGIN CERTIFICATE-----
   MIIDjTCCAnWgAwIBAgIJAMazeCBLPAeCMA0GCSqGSIb3DQEBCwUAMF0xCzAJBgNV
@@ -30,7 +31,6 @@ ssl_crt: |
   /2gucKfZufEhaPL159OVt5fctnRrFySyDmzQX5z2oVWTrTE83huTRc87XQK1QcYH
   +w==
   -----END CERTIFICATE-----
-
 # This key is for demo purposes only. If you're committing your keys
 # to your git repo, you'd probably want it encrypted. You can use
 # ansible-vault to do this.

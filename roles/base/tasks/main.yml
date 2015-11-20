@@ -25,6 +25,7 @@
     - python-pip
     - python-pycurl
     - supervisor
+    - libmagickwand-dev
   tags: packages
 
 - name: Install virtualenv

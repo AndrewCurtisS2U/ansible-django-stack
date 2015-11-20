@@ -43,6 +43,12 @@
         mode=0664
         state=file
 
+- name: Create the Django log file
+  file: path={{ application_log_dir }}/{{ application_name }}.log
+        state=touch
+        owner={{ gunicorn_user }}
+        group={{ gunicorn_group }}
+
 - name: Create the maintenance page
   template: src=maintenance_off.html
             dest={{ virtualenv_path }}/maintenance_off.html
