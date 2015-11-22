@@ -28,7 +28,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # below to enable it.
   #config.vm.synced_folder "../../../my-cool-app", "/webapps/mycoolapp/my-cool-app"
 
-  config.vm.define :special2us_testing do |stage|
+  config.vm.define :"staging.special2.us" do |stage|
     stage.vm.hostname = "staging.special2.us"
 
     # Ansible provisioner.
