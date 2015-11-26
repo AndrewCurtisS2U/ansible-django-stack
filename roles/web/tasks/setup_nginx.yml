@@ -4,12 +4,12 @@
   apt: name=nginx update_cache={{ update_apt_cache }} state=installed
   tags: packages
 
-- name: Copy the SSL certificate to the remote server
-  copy: content="{{ ssl_crt }}" dest={{ ssl_dest_dir }}/{{ application_name }}.crt
+- name: Create the symlink for the SSL certificate
+  file: src="/etc/letsencrypt/live/{{ inventory_hostname }}/fullchain.pem" dest={{ ssl_dest_dir }}/{{ application_name }}.crt state=link force=yes
   notify: restart nginx
 
-- name: Copy the SSL private key to the remote server
-  copy: content="{{ ssl_key }}" dest={{ ssl_dest_dir }}/{{ application_name }}.key
+- name: Create the symlink for the SSL private key
+  file: src="/etc/letsencrypt/live/{{ inventory_hostname }}/privkey.pem" dest={{ ssl_dest_dir }}/{{ application_name }}.key state=link force=yes
   notify: restart nginx
 
 - name: Create the Nginx configuration file
