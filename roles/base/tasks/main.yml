@@ -26,6 +26,7 @@
     - python-pycurl
     - supervisor
     - libmagickwand-dev
+    - mailutils
   tags: packages
 
 - name: Install virtualenv

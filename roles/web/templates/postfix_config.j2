@@ -1,0 +1,5 @@
+relayhost = [smtp.mailgun.org]:587
+
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = static:{{ mailgun_login }}:{{ mailgun_password }}
+smtp_sasl_security_options = noanonymous

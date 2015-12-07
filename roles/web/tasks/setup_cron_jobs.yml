@@ -1,0 +1,18 @@
+---
+
+- name: Create Let's Encrypt config file
+  template: src=letsencrypt_config.j2
+            dest=/etc/letsencrypt/cli.ini
+            backup=yes
+
+- name: Create Let's Encrypt updater script
+  template: src=renew_letsencrypt.j2
+            dest=/usr/local/bin/renew-letsencrypt
+            mode=0755
+            backup=yes
+
+- name: Create cron job
+  cron: name="Renew SSL certificates using Let's Encrypt"
+        special_time=monthly
+        job=/usr/local/bin/renew-letsencrypt
+        backup=yes

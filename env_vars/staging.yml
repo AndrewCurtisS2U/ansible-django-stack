@@ -44,3 +44,6 @@ django_settings_file: "{{ application_name }}.settings_staging"
 
 run_django_db_migrations: yes
 run_django_collectstatic: yes
+
+# Let's Encrypt
+letsencrypt_domain_string: "-d {{ inventory_hostname }}"
