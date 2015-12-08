@@ -11,8 +11,14 @@
             mode=0755
             backup=yes
 
-- name: Create cron job
+- name: Create Let's Encrypt cron job
   cron: name="Renew SSL certificates using Let's Encrypt"
         special_time=monthly
         job=/usr/local/bin/renew-letsencrypt
         backup=yes
+
+- name: "Create 'update_wiki_images' cron job"
+  cron: name=update_wiki_images
+        special_time=monthly
+        job="cd {{ project_path }} && source {{ virtualenv_path }}/bin/activate && source {{ virtualenv_path }}/bin/postactivate && ./manage.py update_wiki_images"
+        user={{ application_name }}
