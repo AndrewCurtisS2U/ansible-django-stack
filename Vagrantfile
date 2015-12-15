@@ -40,4 +40,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
   end
+
+  config.vm.define :"special2us_production" do |stage|
+    stage.vm.hostname = "special2us.com"
+
+    # Ansible provisioner.
+    stage.vm.provision "ansible" do |ansible|
+      ansible.host_key_checking = false
+      ansible.verbose = "v"
+      ansible.vault_password_file = "vault_passwords.txt"
+      ansible.playbook = "production.yml"
+    end
+
+  end
 end
