@@ -30,7 +30,7 @@
     - supervisor
     - libmagickwand-dev
     - mailutils
-    - npm
+    - nodejs
   tags: packages
 
 - name: Install postcss-cli
