@@ -41,8 +41,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   end
 
-  config.vm.define :"special2us.com" do |stage|
-    stage.vm.hostname = "special2us.com"
+  config.vm.define :"special2.us" do |stage|
+    stage.vm.hostname = "special2.us"
 
     # Ansible provisioner.
     stage.vm.provision "ansible" do |ansible|
