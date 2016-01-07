@@ -30,7 +30,6 @@
     - supervisor
     - libmagickwand-dev
     - mailutils
-    - nodejs-legacy
     - npm
   tags: packages
 
