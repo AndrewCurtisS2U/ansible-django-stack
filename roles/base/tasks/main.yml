@@ -13,6 +13,9 @@
     - libssl-doc
   tags: packages
 
+- name: Add the NodeSource APT repository
+  shell: curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
+
 - name: Install base packages
   apt: name={{ item }} update_cache={{ update_apt_cache }} force=yes state=installed
   with_items:
@@ -27,6 +30,7 @@
     - supervisor
     - libmagickwand-dev
     - mailutils
+    - nodejs-legacy
     - npm
   tags: packages
 
@@ -35,6 +39,9 @@
 
 - name: Install autoprefixer
   npm: global=yes name=autoprefixer production=yes
+
+- name: Create the autoprefixer symlink
+  file: src="/usr/local/lib/node_modules/postcss-cli/bin/postcss" dest="/usr/local/bin/postcss" state=link force=yes
 
 - name: Install virtualenv
   pip: name=virtualenv
