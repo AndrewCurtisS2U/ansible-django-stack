@@ -31,10 +31,10 @@
   tags: packages
 
 - name: Install postcss-cli
-  npm: global=yes name=postcss-cli
+  npm: global=yes name=postcss-cli production=yes
 
 - name: Install autoprefixer
-  npm: global=yes name=autoprefixer
+  npm: global=yes name=autoprefixer production=yes
 
 - name: Install virtualenv
   pip: name=virtualenv
