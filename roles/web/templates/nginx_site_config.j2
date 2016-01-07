@@ -53,8 +53,8 @@ server {
 
     # Error pages
     error_page 500 502 504 /500.html;
-    location = /500.html {
-        root {{ project_path }}/{{ application_name }}/templates/;
+    location = /nginx_error_500.html {
+        root {{ project_path }}/{{ application_name }}/;
     }
 
     error_page 503 /maintenance_on.html;
