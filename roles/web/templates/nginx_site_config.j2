@@ -29,10 +29,6 @@ server {
         alias   {{ nginx_static_dir }};
     }
 
-    location /media/ {
-        alias   {{ nginx_media_dir }};
-    }
-
     location / {
         if (-f {{ virtualenv_path }}/maintenance_on.html) {
             return 503;
