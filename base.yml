@@ -17,5 +17,10 @@
     - base
     - db
     - rabbitmq
+    - role: leonidas.nvm
+      nvm:
+        user: '{{ application_name }}'
+        version: 'v0.30.1'
+        node_version: '{{ node_version }}'
     - web
     - celery

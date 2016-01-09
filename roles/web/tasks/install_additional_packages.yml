@@ -4,3 +4,15 @@
   apt: name={{ item }} update_cache={{ update_apt_cache }} force=yes state=installed
   with_items:
     - libav-tools
+
+- name: Install postcss-cli
+  npm: global=yes executable=/home/{{ application_name }}/versions/node/v{{ node_version }}/bin/npm  name=postcss-cli production=yes
+
+- name: Install autoprefixer
+  npm: global=yes executable=/home/{{ application_name }}/versions/node/v{{ node_version }}/bin/npm name=autoprefixer production=yes
+
+- name: Setup Node symlink
+  file: src="/home/{{ application_name }}/versions/node/v{{ node_version }}/bin/node" dest="/usr/local/bin/node" state=link force=yes
+
+- name: Setup PostCSS symlink
+  file: src="/home/{{ application_name }}/versions/node/v{{ node_version }}/bin/postcss" dest="/usr/local/bin/postcss" state=link force=yes

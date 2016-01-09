@@ -6,3 +6,4 @@ project_name: special2us
 application_name: special2us
 
 ssl_dest_dir: /etc/ssl
+node_version: '5.2.0'
