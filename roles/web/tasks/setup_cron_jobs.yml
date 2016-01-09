@@ -24,5 +24,6 @@
 - name: "Create 'update_wiki_images' cron job"
   cron: name=update_wiki_images
         special_time=monthly
-        job="cd {{ project_path }} && source {{ virtualenv_path }}/bin/activate && source {{ virtualenv_path }}/bin/postactivate && ./manage.py update_wiki_images"
+        job="cd {{ project_path }} && . {{ virtualenv_path }}/bin/activate && . {{ virtualenv_path }}/bin/postactivate && ./manage.py update_wiki_images"
         user={{ application_name }}
+        backup=yes
