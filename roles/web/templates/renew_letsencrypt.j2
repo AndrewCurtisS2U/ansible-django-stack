@@ -10,13 +10,15 @@ fi
 
 cd "$LE_DIR"
 service nginx stop
-timeout 1m ./letsencrypt-auto --config /etc/letsencrypt/cli.ini {{ letsencrypt_domain_string }} certonly
+timeout --preserve-status 5m ./letsencrypt-auto --config /etc/letsencrypt/cli.ini {{ letsencrypt_domain_string }} certonly
 
 if [ $? -ne 0 ]; then
-    ERRORLOG=$(tail /var/log/letsencrypt/letsencrypt.log)
-        echo -e "The Lets Encrypt Cert has not been renewed! \n \n" $ERRORLOG | mail -s "Lets Encrypt Cert Alert" joel@kazbak.co.uk
+    ERRORLOG=$(tail /var/log/letsencrypt/letsencrypt.log || echo "No log file found")
+        echo -e "The Lets Encrypt Cert has not been renewed! \n \n" $ERRORLOG | mail -s "Lets Encrypt Cert Alert" {{ letsencrypt_email }}
 fi
 
 service nginx start
+
+logrotate /etc/logrotate.d/letsencrypt
 
 exit 0

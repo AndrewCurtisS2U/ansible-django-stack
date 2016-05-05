@@ -15,6 +15,11 @@
             mode=0755
             backup=yes
 
+- name: Create Let's Encrypt logrotate config
+  template: src=letsencrypt_logrotate.j2
+            dest=/etc/logrotate.d/letsencrypt
+            backup=yes
+
 - name: Create Let's Encrypt cron job
   cron: name="Renew SSL certificates using Let's Encrypt"
         special_time=monthly
