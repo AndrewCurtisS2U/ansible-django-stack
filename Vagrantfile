@@ -26,7 +26,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Shared folder from the host machine to the guest machine. Uncomment the line
   # below to enable it.
-  #config.vm.synced_folder "../../../my-cool-app", "/webapps/mycoolapp/my-cool-app"
+  config.vm.synced_folder ".", "/vagrant", type: "rsync"
 
   config.vm.define :"staging.special2.us" do |stage|
     stage.vm.hostname = "staging.special2.us"
